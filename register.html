@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Chat App - Registro</title>
+  </head>
+  <body>
+    <div id="app">
+      {{#> auth-layout title="Crear Cuenta"}}
+        <form class="login-form">
+          {{> input name="email" label="Correo Electrónico" type="email" placeholder="Ingresa tu correo"}}
+          {{> input name="login" label="Usuario" type="text" placeholder="Elige un usuario"}}
+          {{> input name="first_name" label="Nombre" type="text" placeholder="Tu nombre"}}
+          {{> input name="last_name" label="Apellido" type="text" placeholder="Tu apellido"}}
+          {{> input name="phone" label="Teléfono" type="tel" placeholder="Tu número de celular"}}
+          {{> input name="password" label="Contraseña" type="password" placeholder="Crea una contraseña"}}
+          {{> input name="password_confirm" label="Confirmar Contraseña" type="password" placeholder="Repite tu contraseña"}}
+          
+          <div class="login-form__actions">
+            {{> button text="Registrarse" type="primary" htmlType="submit"}}
+            <a href="/" class="button button--link">Ya tengo cuenta</a>
+          </div>
+        </form>
+      {{/auth-layout}}
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
