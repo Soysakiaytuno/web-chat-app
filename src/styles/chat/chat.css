@@ -219,7 +219,7 @@
 }
 
 /* --- Diseño Desktop (Media Queries) --- */
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .chat-container {
     flex-direction: row; /* Coloca sidebar y ventana principal lado a lado */
   }

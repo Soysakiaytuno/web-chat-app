@@ -1,4 +1,5 @@
 @import '../global.css';
+
 .input-field {
   display: flex;
   flex-direction: column;
@@ -58,4 +59,3 @@
     margin-top: 4px;
     min-height: 1rem;
 }
-
