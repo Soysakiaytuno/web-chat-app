@@ -3,3 +3,4 @@ Este es un proyecto de un pagina de un chat sencillo para practica con typescrip
 en este sprint se estructuro la base para que funcione de una forma sencilla
 
 ## Deploy 
+https://chat-tarea.netlify.app/
