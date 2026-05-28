@@ -1,0 +1,236 @@
+@import '../global.css';
+
+/* --- Layout Base (Mobile First) --- */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
+  background-color: var(--bg-color);
+}
+
+/* Barra Lateral / Lista de Chats */
+.chat-sidebar {
+  width: 100%;
+  height: 100%;
+  background-color: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__profile-link {
+    text-align: right;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+
+    &:hover { color: var(--primary-color); }
+  }
+
+  &__search {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background-color: var(--bg-color);
+    outline: none;
+    
+    &:focus { border-color: var(--primary-color); }
+  }
+}
+
+.chat-list {
+  list-style: none;
+  overflow-y: auto;
+  flex: 1;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--bg-color);
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    &:hover { background-color: var(--bg-color); }
+  }
+
+  &__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  &__name {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-color);
+  }
+
+  &__preview {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Pantalla principal de mensajes (Oculta en móvil por defecto) */
+.chat-main {
+  display: none; 
+  flex: 1;
+  background-color: var(--bg-color);
+  
+  &__placeholder {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+  }
+
+  &__header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg);
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+  }
+
+  &__name {
+    font-weight: 600;
+  }
+
+  &__messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__footer {
+    padding: 15px 20px;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__attach, &__send {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__send {
+    color: var(--primary-color);
+  }
+
+  &__attach:hover {
+    color: var(--primary-color);
+  }
+
+  &__input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    outline: none;
+    font-size: 0.95rem;
+    background-color: var(--bg-color);
+    
+    &:focus { border-color: var(--primary-color); }
+  }
+}
+
+/* Estilos para los globos de mensaje */
+.chat-message {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  
+  &--received {
+    background-color: var(--card-bg);
+    align-self: flex-start;
+    border-bottom-left-radius: 0;
+  }
+  
+  &--sent {
+    background-color: var(--primary-color);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 0;
+  }
+  
+  &__text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  
+  &__time {
+    font-size: 0.7rem;
+    align-self: flex-end;
+    margin-top: 5px;
+    opacity: 0.8;
+  }
+}
+
+/* --- Diseño Desktop (Media Queries) --- */
+@media (min-width: 768px) {
+  .chat-container {
+    flex-direction: row; /* Coloca sidebar y ventana principal lado a lado */
+  }
+  
+  .chat-sidebar {
+    width: 350px; /* Ancho fijo para la lista de chats */
+    border-right: 1px solid var(--border-color);
+  }
+  
+  .chat-main {
+    display: flex; /* Muestra el área de mensajes en escritorio */
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,101 @@
+@import '../global.css';
+
+/* --- Layout Base (Mobile First) --- */
+.profile-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+
+  &__sidebar {
+    padding: 15px;
+    /* En móvil, actúa como una navbar superior */
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+}
+
+.profile-card {
+  background-color: var(--card-bg);
+  padding: 40px 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: var(--text-color);
+  }
+
+  &__info {
+    width: 100%;
+    margin-bottom: 30px;
+    
+    p {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.95rem;
+      
+      &:last-child { border-bottom: none; }
+    }
+  }
+
+  &__actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+  }
+}
+
+.profile-form {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* --- Diseño Desktop (Media Queries) --- */
+@media (min-width: 768px) {
+  .profile-layout {
+    flex-direction: row; /* Sidebar a la izquierda, contenido al centro */
+
+    &__sidebar {
+      width: 80px;
+      border-right: 1px solid var(--border-color);
+      background-color: var(--card-bg);
+      display: flex;
+      justify-content: center;
+      padding-top: 20px;
+      
+      /* Ajustamos el botón de volver para que se vea bien en el sidebar lateral */
+      .button {
+        height: fit-content;
+        padding: 10px;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

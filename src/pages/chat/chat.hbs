@@ -1,0 +1,48 @@
+<div class="chat-container">
+  <aside class="chat-sidebar">
+    <div class="chat-sidebar__header">
+      <a href="/profile" class="chat-sidebar__profile-link">Perfil ⚙️</a>
+      <input type="text" class="chat-sidebar__search" placeholder="Buscar..." />
+    </div>
+    <ul class="chat-list">
+      <!-- Ejemplo estático de un chat en la lista -->
+      <li class="chat-list__item">
+        <div class="chat-list__avatar"></div>
+        <div class="chat-list__info">
+          <span class="chat-list__name">John Doe</span>
+          <span class="chat-list__preview">Hola, ¿cómo estás?</span>
+        </div>
+      </li>
+    </ul>
+  </aside>
+  
+  <main class="chat-main">
+    <!-- Cabecera del chat -->
+    <header class="chat-main__header">
+      <div class="chat-main__user">
+        <div class="chat-main__avatar"></div>
+        <span class="chat-main__name">John Doe</span>
+      </div>
+      <button class="button button--link" style="width: auto;">⋮</button>
+    </header>
+
+    <!-- Área de mensajes -->
+    <div class="chat-main__messages">
+      <div class="chat-message chat-message--received">
+        <p class="chat-message__text">Hola, ¿cómo estás?</p>
+        <span class="chat-message__time">10:30</span>
+      </div>
+      <div class="chat-message chat-message--sent">
+        <p class="chat-message__text">¡Todo bien! ¿Y tú? Estamos avanzando rápido con el proyecto.</p>
+        <span class="chat-message__time">10:32</span>
+      </div>
+    </div>
+
+    <!-- Controles de envío -->
+    <footer class="chat-main__footer">
+      <button class="chat-main__attach">📎</button>
+      <input type="text" class="chat-main__input" placeholder="Escribe un mensaje..." />
+      <button class="chat-main__send">➤</button>
+    </footer>
+  </main>
+</div>

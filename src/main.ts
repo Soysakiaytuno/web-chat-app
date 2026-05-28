@@ -11,6 +11,10 @@ import loginPage from './pages/login/login.hbs?raw';
 import registerPage from './pages/register/register.hbs?raw';
 import error404Page from './pages/404/404.hbs?raw';
 import error500Page from './pages/500/500.hbs?raw';
+import chatPage from './pages/chat/chat.hbs?raw';
+import profilePage from './pages/profile/profile.hbs?raw';
+import profileEditPage from './pages/profile/profile-edit.hbs?raw';
+import passwordEditPage from './pages/profile/password-edit.hbs?raw';
 
 // 3. Registrar los partials en Handlebars
 Handlebars.registerPartial('auth-layout', authLayout);
@@ -23,6 +27,10 @@ const routes: Record<string, string> = {
   '/register': registerPage,
   '/404': error404Page,
   '/500': error500Page,
+  '/chat': chatPage,
+  '/profile': profilePage,
+  '/profile-edit': profileEditPage,
+  '/password-edit': passwordEditPage,
 };
 
 // 5. Lógica del Router
