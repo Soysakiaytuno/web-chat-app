@@ -1,13 +1,25 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Meta tag vital para el diseño Mobile-First -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>chat</title>
+    <title>Web Chat App - Login</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      {{#> auth-layout title="Iniciar Sesión"}}
+        <form class="login-form">
+          {{> input name="login" label="Usuario" type="text" placeholder="Ingresa tu usuario"}}
+          {{> input name="password" label="Contraseña" type="password" placeholder="Ingresa tu contraseña"}}
+          
+          <div class="login-form__actions">
+            {{> button text="Entrar" type="primary" htmlType="submit"}}
+            <a href="/register" class="button button--link">Crear cuenta</a>
+          </div>
+        </form>
+      {{/auth-layout}}
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

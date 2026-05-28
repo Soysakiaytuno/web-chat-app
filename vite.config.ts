@@ -5,7 +5,10 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [
     handlebars({
-      partialDirectory: resolve(__dirname, 'src/partials'),
+      partialDirectory: [
+        resolve(__dirname, 'src/partials'),
+        resolve(__dirname, 'src/components')
+      ],
     }) as any,
   ],
 });

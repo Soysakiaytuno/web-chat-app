@@ -1,0 +1,36 @@
+@import '../global.css';
+
+.button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s;
+}
+
+.button--primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.button--primary:hover 
+{
+    background-color: var(--primary-hover);
+}
+
+.button--link {
+    background-color: transparent;
+    color: var(--primary-color);
+    margin-top: 8px;
+}
+
+.button--link:hover 
+{
+    text-decoration: underline;
+}
