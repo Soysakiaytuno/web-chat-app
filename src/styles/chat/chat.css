@@ -44,6 +44,10 @@
     
     &:focus { border-color: var(--primary-color); }
   }
+  &--hidden
+  {
+    display: none;
+  }
 }
 
 .chat-list {
@@ -182,6 +186,17 @@
     
     &:focus { border-color: var(--primary-color); }
   }
+  &--active
+  {
+    display: flex;
+    flex-direction: column;
+  }
+  &__back-button
+  {
+    border-color: var(--primary-color);
+    border-radius: 50%;
+    width: 32px;
+  }
 }
 
 /* Estilos para los globos de mensaje */
@@ -224,7 +239,14 @@
     flex-direction: row; /* Coloca sidebar y ventana principal lado a lado */
   }
   
+  /* Forzamos a que la lista SIEMPRE se vea en computadora, anulando el hidden del móvil */
+  .chat-sidebar--hidden 
+  {
+    display: flex !important;
+  }
+  
   .chat-sidebar {
+    display: flex; /* Muestra la barra lateral en escritorio */
     width: 350px; /* Ancho fijo para la lista de chats */
     border-right: 1px solid var(--border-color);
   }
@@ -232,5 +254,9 @@
   .chat-main {
     display: flex; /* Muestra el área de mensajes en escritorio */
     flex-direction: column;
+  }
+  .chat-main__back-button
+  {
+    display: none;
   }
 }

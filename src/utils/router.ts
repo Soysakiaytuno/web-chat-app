@@ -3,6 +3,7 @@ import { Block } from './Block';
 import { LoginPage } from '../pages/login/LoginPage';
 import { Register } from '../pages/register/register';
 import { ProfileEdit } from '../pages/profile/profile-edit';
+import { ChatPage } from '../pages/chat/ChatPage';
 
 import authLayout from '../partials/auth-layout.hbs?raw';
 import input from '../components/input.hbs?raw';
@@ -10,7 +11,6 @@ import button from '../components/button.hbs?raw';
 
 import error404Page from '../pages/404/404.hbs?raw';
 import error500Page from '../pages/500/500.hbs?raw';
-import chatPage from '../pages/chat/chat.hbs?raw';
 import profilePage from '../pages/profile/profile.hbs?raw';
 import passwordEditPage from '../pages/profile/password-edit.hbs?raw';
 
@@ -28,7 +28,7 @@ export class Router
         '/register': Register,
         '/404': error404Page,
         '/500': error500Page,
-        '/chat': chatPage,
+        '/chat': ChatPage,
         '/profile': profilePage,
         '/profile-edit': ProfileEdit,
         '/password-edit': passwordEditPage,
