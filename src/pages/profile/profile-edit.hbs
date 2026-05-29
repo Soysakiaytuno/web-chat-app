@@ -6,12 +6,12 @@
     <div class="profile-card">
       <div class="profile-card__avatar"></div>
       <form class="profile-form">
-        {{> input name="email" label="Correo" type="email" placeholder="correo@ejemplo.com"}}
-        {{> input name="login" label="Usuario" type="text" placeholder="mijael123"}}
-        {{> input name="first_name" label="Nombre" type="text" placeholder="Mijael"}}
-        {{> input name="last_name" label="Apellido" type="text" placeholder="Ander"}}
-        {{> input name="phone" label="Teléfono" type="tel" placeholder="+123456789"}}
-        {{> button text="Guardar Cambios" type="primary" htmlType="submit"}}
+        <div data-layout="input-email"></div>
+        <div data-layout="input-login"></div>
+        <div data-layout="input-first-name"></div>
+        <div data-layout="input-last-name"></div>
+        <div data-layout="input-phone"></div>
+        <button class="button button--primary" type="submit">Guardar Cambios</button>
       </form>
     </div>
   </main>

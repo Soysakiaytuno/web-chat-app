@@ -35,6 +35,24 @@ export class Validation
         return null;
     }
 
-// Puedes agregar validatePhone, validateLogin, etc.
+    validatePhone(phone: string): string | null {
+        // ^      : Empieza con
+        // \+?    : El símbolo '+' (escapado con \), y el '?' lo hace opcional
+        // \d     : Solo números (dígitos)
+        // {8,15} : Entre 8 y 15 números
+        // $      : Termina aquí
+        const phoneRegex = /^\+?\d{8,15}$/;
+        if (!phoneRegex.test(phone)) {
+            return "Debe contener entre 8 y 15 números (puede incluir + al inicio)";
+        }
+        return null;
+    }
 
+    validateSamePassword(password: string, matchPassword: string): string | null 
+    {
+        if (password !== matchPassword) {
+            return "Las contraseñas no coinciden";
+        }
+        return null;
+    }
 }

@@ -56,6 +56,9 @@ export class Input extends Block<InputProps> {
         case 'last_name':
             errorMessage = validation.validateName(value);
             break;
+        case 'phone':
+            errorMessage = validation.validatePhone(value);
+            break;
     }
     
     // Inyectamos el error en el DOM antes de retornar
