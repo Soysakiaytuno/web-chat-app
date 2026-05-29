@@ -48,6 +48,9 @@ export class Input extends Block<InputProps> {
             errorMessage = validation.validateLogin(value);
             break;
         case 'password':
+        case 'oldPassword':
+        case 'newPassword':
+        case 'newPasswordConfirm':
             errorMessage = validation.validatePassword(value);
             break;
         case 'first_name':
