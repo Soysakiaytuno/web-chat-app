@@ -3,6 +3,7 @@ import Handlebars from 'handlebars';
 import registerTemplate from './register.hbs?raw';
 import { Input } from '../../components/Input';
 import { Router } from '../../utils/router';
+import { Data } from '../../utils/Data';
 
 export class Register extends Block {
   declare private loginInput: Input;
@@ -47,7 +48,11 @@ export class Register extends Block {
         return;
       }
 
-      console.log('🚀 Datos recolectados y válidos:', data);
+      // Guardamos el usuario en nuestro estado global (Data)
+      const store = Data.getInstance();
+      store.setUser(data as Record<string, string>);
+
+      console.log('🚀 Usuario registrado con éxito:', store.getUser());
       new Router().navigate('/chat'); // Simulamos el inicio de sesión exitoso
     }
   }

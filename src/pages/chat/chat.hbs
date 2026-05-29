@@ -5,12 +5,25 @@
       <input type="text" class="chat-sidebar__search" placeholder="Buscar..." />
     </div>
     <ul class="chat-list">
-      <!-- Ejemplo estático de un chat en la lista -->
       <li class="chat-list__item">
         <div class="chat-list__avatar"></div>
         <div class="chat-list__info">
           <span class="chat-list__name">John Doe</span>
           <span class="chat-list__preview">Hola, ¿cómo estás?</span>
+        </div>
+      </li>
+      <li class="chat-list__item">
+        <div class="chat-list__avatar" style="background-color: #fca5a5;"></div>
+        <div class="chat-list__info">
+          <span class="chat-list__name">María García</span>
+          <span class="chat-list__preview">Te envié el reporte.</span>
+        </div>
+      </li>
+      <li class="chat-list__item">
+        <div class="chat-list__avatar" style="background-color: #6ee7b7;"></div>
+        <div class="chat-list__info">
+          <span class="chat-list__name">Carlos Pérez</span>
+          <span class="chat-list__preview">¿A qué hora nos vemos?</span>
         </div>
       </li>
     </ul>
@@ -24,7 +37,12 @@
         <div class="chat-main__avatar"></div>
         <span class="chat-main__name">John Doe</span>
       </div>
-      <button class="button button--link" style="width: auto;">⋮</button>
+      <div class="chat-main__options">
+        <button class="button button--link chat-main__options-btn" type="button" style="width: auto; padding: 0 10px;">⋮</button>
+        <div class="chat-main__options-menu" style="display: none;">
+          <button class="chat-main__delete-btn" style="color: var(--error-color); border: none; background: none; cursor: pointer; width: 100%; text-align: left; padding: 10px;">🗑️ Eliminar Chat</button>
+        </div>
+      </div>
     </header>
 
     <!-- Área de mensajes -->
@@ -41,7 +59,14 @@
 
     <!-- Controles de envío -->
     <footer class="chat-main__footer">
-      <button class="chat-main__attach">📎</button>
+      <div class="chat-main__attach-container">
+        <button class="chat-main__attach">📎</button>
+        <div class="chat-main__attach-menu" style="display: none;">
+            <button class="chat-main__attach-item">📷 Foto/Video</button>
+            <button class="chat-main__attach-item">📄 Documento</button>
+            <button class="chat-main__attach-item">📍 Ubicación</button>
+        </div>
+      </div>
       <input type="text" class="chat-main__input" placeholder="Escribe un mensaje..." />
       <button class="chat-main__send">➤</button>
     </footer>

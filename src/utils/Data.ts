@@ -1,71 +1,30 @@
-export class Data
-{
-    private static instance: Data;
-    declare private usuario: string;
-    declare private password: string;
-    declare private email: string;
-    declare private nombre: string;
-    declare private apellido: string;
-    declare private telefono: string;
+export class Data {
+  private static instance: Data;
+  
+  // Usuario simulado en la "Base de Datos" por defecto
+  private user: Record<string, string> = {
+    login: 'mijael123',
+    password: 'Password123',
+    email: 'correo@ejemplo.com',
+    first_name: 'Mijael',
+    last_name: 'Ander',
+    phone: '+123456789'
+  };
 
-    private constructor()
-    {
-           
-    }
+  private constructor() {}
 
-    public static getInstance(): Data
-    {
-        if (!Data.instance) {
-            Data.instance = new Data();
-        }
-        return Data.instance;
+  public static getInstance(): Data {
+    if (!Data.instance) {
+      Data.instance = new Data();
     }
-    getUsuario(): string
-    {
-        return this.usuario;
-    }
-    getPassword(): string
-    {
-        return this.password;
-    }
-    getEmail(): string
-    {
-        return this.email;
-    }
-    getNombre(): string
-    {
-        return this.nombre;
-    }
-    getApellido(): string
-    {
-        return this.apellido;
-    }
-    getTelefono(): string
-    {
-        return this.telefono;
-    }
-    setUsuario(usuario: string): void
-    {
-        this.usuario = usuario;
-    }
-    setPassword(password: string): void
-    {
-        this.password = password;
-    }
-    setEmail(email: string): void
-    {
-        this.email = email;
-    }
-    setNombre(nombre: string): void
-    {
-        this.nombre = nombre;
-    }
-    setApellido(apellido: string): void
-    {
-        this.apellido = apellido;
-    }
-    setTelefono(telefono: string): void
-    {
-        this.telefono = telefono;
-    }
+    return Data.instance;
+  }
+
+  public setUser(data: Record<string, string>) {
+    this.user = { ...this.user, ...data };
+  }
+
+  public getUser(): Record<string, string> {
+    return this.user;
+  }
 }

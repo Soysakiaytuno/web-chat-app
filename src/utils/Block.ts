@@ -13,12 +13,12 @@ export class Block<P extends Record<string, unknown> = Record<string, unknown>> 
   protected props: P;
   private eventBus: () => EventBus;
 
-  constructor(props: P) {
+  constructor(props: P = {} as P) {
     const eventBus = new EventBus();
     this.eventBus = () => eventBus;
 
     // Envolvemos las props en nuestro Proxy observador
-    this.props = this._makePropsProxy(props);
+    this.props = this._makePropsProxy(props || {} as P);
 
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.INIT);

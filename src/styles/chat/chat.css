@@ -63,7 +63,7 @@
     cursor: pointer;
     transition: background-color 0.2s;
     
-    &:hover { background-color: var(--bg-color); }
+    &:hover, &--active { background-color: #e5e7eb; } /* Color más oscurito para el seleccionado */
   }
 
   &__avatar {
@@ -73,6 +73,22 @@
     background-color: var(--border-color);
     margin-right: 15px;
     flex-shrink: 0;
+  }
+
+  &__options {
+    position: relative;
+  }
+
+  &__options-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+    padding: 5px;
+    min-width: 150px;
   }
 
   &__info {
@@ -196,6 +212,37 @@
     border-color: var(--primary-color);
     border-radius: 50%;
     width: 32px;
+  }
+  &__attach-container
+  {
+    position: relative;
+  }
+  &__attach-menu
+  {
+    position: absolute;
+    bottom: 100%; /* Lo empuja hacia arriba del clip */
+    left: 0;
+    margin-bottom: 10px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+    padding: 5px;
+    min-width: 150px;
+    flex-direction: column; /* Apila los botones en lista */
+    gap: 5px;
+  }
+  &__attach-item
+  {
+    border: none;
+    background: none;
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    color: var(--text-color);
+    border-radius: 4px;
+    
+    &:hover { background-color: var(--bg-color); }
   }
 }
 
