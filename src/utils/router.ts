@@ -1,10 +1,11 @@
 import Handlebars from 'handlebars';
+import { Block } from './Block';
+import { LoginPage } from '../pages/login/LoginPage';
 
 import authLayout from '../partials/auth-layout.hbs?raw';
 import input from '../components/input.hbs?raw';
 import button from '../components/button.hbs?raw';
 
-import loginPage from '../pages/login/login.hbs?raw';
 import registerPage from '../pages/register/register.hbs?raw';
 import error404Page from '../pages/404/404.hbs?raw';
 import error500Page from '../pages/500/500.hbs?raw';
@@ -21,9 +22,9 @@ export class Router
 {
     constructor()
     {}
-    private routes: Record<string, string> = 
+    private routes: Record<string, string | (new () => Block)> = 
     {
-        '/': loginPage,
+        '/': LoginPage, // Ahora usamos la CLASE, no el string
         '/register': registerPage,
         '/404': error404Page,
         '/500': error500Page,
@@ -44,8 +45,16 @@ export class Router
         if (!app) {
             return;
         }
-        const templateSource = app.innerHTML = this.routes[path] || this.routes['/404'];
-        const templateHandlebars = Handlebars.compile(templateSource);
-        app.innerHTML = templateHandlebars({});
+        
+        const route = this.routes[path] || this.routes['/404'];
+        app.innerHTML = ''; // Limpiamos el DOM
+
+        if (typeof route === 'string') {
+            const templateHandlebars = Handlebars.compile(route);
+            app.innerHTML = templateHandlebars({});
+        } else {
+            const page = new route(); // Instanciamos el Block
+            if (page.element) app.appendChild(page.element);
+        }
     }
 }

@@ -9,7 +9,7 @@ export class Block<P extends Record<string, unknown> = Record<string, unknown>> 
     FLOW_RENDER: 'flow:render',
   } as const;
 
-  private _element: HTMLElement | null = null;
+  protected _element: HTMLElement | null = null;
   protected props: P;
   private eventBus: () => EventBus;
 
@@ -31,7 +31,7 @@ export class Block<P extends Record<string, unknown> = Record<string, unknown>> 
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  private init() {
+  protected init() {
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
@@ -42,16 +42,17 @@ export class Block<P extends Record<string, unknown> = Record<string, unknown>> 
   // Método que los componentes hijos pueden sobreescribir
   public componentDidMount() {}
 
-  private _componentDidUpdate(oldProps: unknown[], newProps: unknown[]) {
-    const response = this.componentDidUpdate(oldProps[0] as P, newProps[0] as P);
+  private _componentDidUpdate(...args: unknown[]) {
+    const oldProps = args[0] as P;
+    const newProps = args[1] as P;
+    const response = this.componentDidUpdate(oldProps, newProps);
     if (response) {
       this._render();
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public componentDidUpdate(oldProps: P, newProps: P) {
-    return true; // Por defecto siempre re-renderiza si cambian las props
+  public componentDidUpdate(_oldProps: P, _newProps: P) {
+    return true;
   }
 
   public setProps = (nextProps: Partial<P>) => {
@@ -61,9 +62,53 @@ export class Block<P extends Record<string, unknown> = Record<string, unknown>> 
     Object.assign(this.props, nextProps);
   };
 
+  get element() {
+    return this._element;
+  }
+
   private _render() {
-    // Aquí irá la lógica pesada de compilar Handlebars y actualizar el DOM (Lo haremos en la Parte 2)
-    console.log('Renderizando componente...');
+    const block = this.render();
+
+    // Eliminamos los eventos viejos antes de actualizar el DOM para evitar fugas de memoria
+    this._removeEvents();
+
+    // Si ya existía un elemento en el DOM, lo reemplazamos con el nuevo
+    if (this._element && block) {
+      this._element.replaceWith(block);
+    }
+
+    if (block) {
+      this._element = block;
+      // Añadimos los eventos al nuevo elemento
+      this._addEvents();
+    }
+  }
+
+  // Método que los componentes hijos deben sobreescribir
+  protected render(): HTMLElement | null {
+    return null;
+  }
+
+  // Compila una plantilla de Handlebars y devuelve un elemento HTML real
+  protected compile(template: (context: unknown) => string, context: unknown): HTMLElement {
+    const htmlString = template(context);
+    const tempElement = document.createElement('template');
+    tempElement.innerHTML = htmlString;
+    return tempElement.content.firstElementChild as HTMLElement;
+  }
+
+  private _addEvents() {
+    const { events = {} } = this.props as { events?: Record<string, EventListener> };
+    Object.keys(events).forEach((eventName) => {
+      this._element?.addEventListener(eventName, events[eventName]);
+    });
+  }
+
+  private _removeEvents() {
+    const { events = {} } = this.props as { events?: Record<string, EventListener> };
+    Object.keys(events).forEach((eventName) => {
+      this._element?.removeEventListener(eventName, events[eventName]);
+    });
   }
 
   private _makePropsProxy(props: P): P {

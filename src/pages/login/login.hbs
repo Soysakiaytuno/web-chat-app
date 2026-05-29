@@ -1,11 +1,11 @@
 {{#> auth-layout title="Iniciar Sesión"}}
   <form class="login-form">
-    {{> input name="login" label="Usuario" type="text" placeholder="Ingresa tu usuario"}}
-    {{> input name="password" label="Contraseña" type="password" placeholder="Ingresa tu contraseña"}}
+    <div data-layout="input-login"></div>
+    <div data-layout="input-password"></div>
     
     <div class="login-form__actions">
-      <!-- Cambiamos temporalmente a enlace para probar el router -->
-      <a href="/chat" class="button button--primary">Entrar</a>
+      <!-- Cambiamos enlace por un botón real tipo submit -->
+      <button class="button button--primary" type="submit">Entrar</button>
       <a href="/register" class="button button--link">Crear cuenta</a>
     </div>
   </form>
